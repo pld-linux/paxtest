@@ -1,7 +1,7 @@
 Summary:	PaXtest is a tool which tests the protection provided by PaX
 Name:		paxtest
 Version:	0.9.6
-Release:	0.8
+Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	http://www.adamantix.org/paxtest/%{name}-%{version}.tar.gz

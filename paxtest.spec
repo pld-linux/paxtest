@@ -43,9 +43,11 @@ wykonaæ sprytne sztuczki, aby obej¶æ mechanizmy ochrony.
 %patch0 -p1
 
 %build
-CFLAGS="%{rpmcflags}"; export CFLAGS
-LDFLAGS="%{rpmldflags}"; export LDFLAGS
+# pass CFLAGS,LDFLAGS in env not as make arguments, so += can work
+CFLAGS="%{rpmcflags}" \
+LDFLAGS="%{rpmldflags}" \
 %{__make} generic \
+	CC="%{__cc}" \
 	RUNDIR="%{_bindir}"
 
 %install
@@ -61,5 +63,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc README debian/changelog results
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*
+%attr(755,root,root) %{_libdir}/*.so

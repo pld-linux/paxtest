@@ -1,0 +1,108 @@
+Wspólne podkatalogi: paxtest-0.9.6/chpax-0.5 i paxtest-0.9.6.fixed/chpax-0.5
+Wspólne podkatalogi: paxtest-0.9.6/debian i paxtest-0.9.6.fixed/debian
+diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
+--- paxtest-0.9.6/Makefile.generic	2004-03-05 12:50:42.000000000 +0100
++++ paxtest-0.9.6.fixed/Makefile.generic	2004-03-15 21:44:28.858787496 +0100
+@@ -1,8 +1,5 @@
+ #!/usr/bin/make
+ 
+-CC=gcc
+-CFLAGS=-O2
+-LDFLAGS=
+ ifndef RUNDIR
+ RUNDIR=.
+ endif
+@@ -48,19 +45,10 @@
+ 	getstack1 \
+ 	getstack2
+ 
+-CHPAX:=chpax-0.5
+-
+-CHPAXSRC:=$(CHPAX)/aout.c \
+-	$(CHPAX)/chpax.c \
+-	$(CHPAX)/elf32.c \
+-	$(CHPAX)/elf64.c \
+-	$(CHPAX)/flags.c \
+-	$(CHPAX)/io.c
+-
+ SHLIBS=	shlibtest.so \
+ 	shlibtest2.so
+ 
+-all: chpax $(SHLIBS) $(TESTS) $(UTILS) paxtest
++all: $(SHLIBS) $(TESTS) $(UTILS) paxtest
+ 
+ clean:
+ 	-rm -f *.o $(CHPAX)/*.o *.s *~ core
+@@ -69,13 +57,13 @@
+ 
+ ifdef DESTDIR
+ ifdef BINDIR
+-ifdef RUNDIR
++ifdef LIBDIR
+ install: all
+-	mkdir -p $(DESTDIR)/$(RUNDIR)
+-	cp $(SHLIBS) $(TESTS) $(UTILS) $(DESTDIR)/$(RUNDIR)
+-	mkdir -p $(DESTDIR)/$(BINDIR)
+-	cp paxtest $(DESTDIR)/$(BINDIR)
+-	chmod 755 $(DESTDIR)/$(BINDIR)/paxtest
++	mkdir -p $(DESTDIR)$(LIBDIR)
++	cp $(SHLIBS) $(DESTDIR)$(LIBDIR)
++	mkdir -p $(DESTDIR)$(BINDIR)
++	cp paxtest $(TESTS) $(UTILS) $(DESTDIR)$(BINDIR)
++	chmod 755 $(DESTDIR)$(BINDIR)/paxtest
+ endif
+ endif
+ endif
+@@ -85,9 +73,6 @@
+ 
+ anonmap: body.o anonmap.o
+ 
+-chpax: $(CHPAXSRC:.c=.o)
+-	$(CC) $(LDFLAGS) -o $@ $+
+-
+ crt1S.o: crt1S.S
+ 
+ execbss: body.o execbss.o
+@@ -111,7 +96,7 @@
+ 
+ getmain1: getmain.o
+ 	$(CC) $(LDFLAGS) -o $@ $+
+-	./chpax -X $@
++	/sbin/chpax -X $@
+ 
+ getmain2: crt1S.o interp.o getmain2.o
+ 	$(CC) -shared -o $@ $+
+@@ -123,13 +108,13 @@
+ 
+ getstack1: getstack.o
+ 	$(CC) $(LDFLAGS) -o $@ $+
+-	./chpax -S $@
++	/sbin/chpax -S $@
+ 
+-getstack2: getstack1 chpax
++getstack2: getstack1
+ 	rm -f $@
+ 	cp getstack1 $@
+ 	chmod +x $@
+-	./chpax -P $@
++	/sbin/chpax -P $@
+ 
+ mprotanon: body.o mprotanon.o
+ 
+@@ -165,13 +150,13 @@
+ 
+ rettofunc1x: body.o rettofunc1x.o
+ 	$(CC) $(LDFLAGS) -o $@ $+
+-	./chpax -X $@
++	/sbin/chpax -X $@
+ 
+ rettofunc2: body.o rettofunc2.o
+ 
+ rettofunc2x: body.o rettofunc2x.o
+ 	$(CC) $(LDFLAGS) -o $@ $+
+-	./chpax -X $@
++	/sbin/chpax -X $@
+ 
+ shlibtest.o: shlibtest.c
+ 	$(CC) $(CFLAGS) -fPIC -DPIC -c $< -o $@
+Wspólne podkatalogi: paxtest-0.9.6/results i paxtest-0.9.6.fixed/results

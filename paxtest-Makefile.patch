@@ -1,8 +1,6 @@
-Wspólne podkatalogi: paxtest-0.9.6/chpax-0.5 i paxtest-0.9.6.fixed/chpax-0.5
-Wspólne podkatalogi: paxtest-0.9.6/debian i paxtest-0.9.6.fixed/debian
-diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
---- paxtest-0.9.6/Makefile.generic	2004-03-05 12:50:42.000000000 +0100
-+++ paxtest-0.9.6.fixed/Makefile.generic	2004-03-15 21:44:28.858787496 +0100
+diff -u paxtest-0.9.6.orig/Makefile.generic paxtest-0.9.6/Makefile.generic
+--- paxtest-0.9.6.orig/Makefile.generic	2004-03-05 12:50:42.000000000 +0100
++++ paxtest-0.9.6/Makefile.generic	2004-03-18 00:24:04.027081512 +0100
 @@ -1,8 +1,5 @@
  #!/usr/bin/make
  
@@ -68,7 +66,7 @@ diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
  getmain1: getmain.o
  	$(CC) $(LDFLAGS) -o $@ $+
 -	./chpax -X $@
-+	/sbin/chpax -X $@
++	/sbin/paxctl -X $@
  
  getmain2: crt1S.o interp.o getmain2.o
  	$(CC) -shared -o $@ $+
@@ -77,7 +75,7 @@ diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
  getstack1: getstack.o
  	$(CC) $(LDFLAGS) -o $@ $+
 -	./chpax -S $@
-+	/sbin/chpax -S $@
++	/sbin/paxctl -S $@
  
 -getstack2: getstack1 chpax
 +getstack2: getstack1
@@ -85,7 +83,7 @@ diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
  	cp getstack1 $@
  	chmod +x $@
 -	./chpax -P $@
-+	/sbin/chpax -P $@
++	/sbin/paxctl -P $@
  
  mprotanon: body.o mprotanon.o
  
@@ -94,15 +92,15 @@ diff -u paxtest-0.9.6/Makefile.generic paxtest-0.9.6.fixed/Makefile.generic
  rettofunc1x: body.o rettofunc1x.o
  	$(CC) $(LDFLAGS) -o $@ $+
 -	./chpax -X $@
-+	/sbin/chpax -X $@
++	/sbin/paxctl -X $@
  
  rettofunc2: body.o rettofunc2.o
  
  rettofunc2x: body.o rettofunc2x.o
  	$(CC) $(LDFLAGS) -o $@ $+
 -	./chpax -X $@
-+	/sbin/chpax -X $@
++	/sbin/paxctl -X $@
  
  shlibtest.o: shlibtest.c
  	$(CC) $(CFLAGS) -fPIC -DPIC -c $< -o $@
-Wspólne podkatalogi: paxtest-0.9.6/results i paxtest-0.9.6.fixed/results
+Wspólne podkatalogi: paxtest-0.9.6.orig/results i paxtest-0.9.6/results

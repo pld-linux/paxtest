@@ -7,7 +7,7 @@ Group:		Applications/System
 Source0:	http://www.adamantix.org/paxtest/%{name}-%{version}.tar.gz
 # Source0-md5:	6e48b4b7c82160c841a6aed81e4bc8b3
 Patch0:		%{name}-Makefile.patch
-BuildRequires:	chpax
+BuildRequires:	paxctl
 URL:		http://www.adamantix.org/paxtest/
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 

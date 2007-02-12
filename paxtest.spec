@@ -1,5 +1,5 @@
 Summary:	PaXtest - a tool which tests the protection provided by PaX
-Summary(pl):	PaXtest - narzêdzie testuj±ce mechanizm obronny PaX
+Summary(pl.UTF-8):   PaXtest - narzÄ™dzie testujÄ…ce mechanizm obronny PaX
 Name:		paxtest
 Version:	0.9.6
 Release:	1
@@ -25,19 +25,19 @@ conventional methods to test the security. The blackhat mode however
 simulates a more clever attacker. It tries to do clever tricks to get
 around the kernel protection.
 
-%description -l pl
-PaXtest to narzêdzie testuj±ce mechanizmy ochrony dostarczane przez
-PaX. Jest to zestaw testów regresji próbuj±cych wykonaæ wszystkie
-rodzaje brzydkich sztuczek, a nastêpnie raportuj±ce, które z nich
-zadzia³a³y, a które nie. Wszystko co mo¿e zrobiæ PaXtest, mo¿e zrobiæ
-tak¿e atakuj±cy. PaXtest mo¿e byæ u¿ywany tak¿e do testowania innych
-³at na j±dra (takich jak OpenWall czy exec-shield w OpenBSD).
+%description -l pl.UTF-8
+PaXtest to narzÄ™dzie testujÄ…ce mechanizmy ochrony dostarczane przez
+PaX. Jest to zestaw testÃ³w regresji prÃ³bujÄ…cych wykonaÄ‡ wszystkie
+rodzaje brzydkich sztuczek, a nastÄ™pnie raportujÄ…ce, ktÃ³re z nich
+zadziaÅ‚aÅ‚y, a ktÃ³re nie. Wszystko co moÅ¼e zrobiÄ‡ PaXtest, moÅ¼e zrobiÄ‡
+takÅ¼e atakujÄ…cy. PaXtest moÅ¼e byÄ‡ uÅ¼ywany takÅ¼e do testowania innych
+Å‚at na jÄ…dra (takich jak OpenWall czy exec-shield w OpenBSD).
 
 PaXtest w wersji 0.9.6 wprowadza tak zwane tryby dzieciaka i
-w³amywacza. Ten pierwszy symuluje niezbyt m±drego "script kiddie",
-próbuje u¿ywaæ konwencjonalnych metod przy testowaniu zabezpieczeñ.
-Tryb "blackhat" symuluje bardziej sprytnego w³amywacza, próbuje
-wykonaæ sprytne sztuczki, aby obej¶æ mechanizmy ochrony.
+wÅ‚amywacza. Ten pierwszy symuluje niezbyt mÄ…drego "script kiddie",
+prÃ³buje uÅ¼ywaÄ‡ konwencjonalnych metod przy testowaniu zabezpieczeÅ„.
+Tryb "blackhat" symuluje bardziej sprytnego wÅ‚amywacza, prÃ³buje
+wykonaÄ‡ sprytne sztuczki, aby obejÅ›Ä‡ mechanizmy ochrony.
 
 %prep
 %setup -q

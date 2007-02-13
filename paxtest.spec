@@ -1,5 +1,5 @@
 Summary:	PaXtest - a tool which tests the protection provided by PaX
-Summary(pl.UTF-8):   PaXtest - narzędzie testujące mechanizm obronny PaX
+Summary(pl.UTF-8):	PaXtest - narzędzie testujące mechanizm obronny PaX
 Name:		paxtest
 Version:	0.9.6
 Release:	1

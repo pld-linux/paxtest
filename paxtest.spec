@@ -1,15 +1,16 @@
 Summary:	PaXtest - a tool which tests the protection provided by PaX
 Summary(pl.UTF-8):	PaXtest - narzędzie testujące mechanizm obronny PaX
 Name:		paxtest
-Version:	0.9.6
-Release:	1
+Version:	0.9.7
+%define		pre	pre5
+Release:	0.%{pre}.1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://www.adamantix.org/paxtest/%{name}-%{version}.tar.gz
-# Source0-md5:	6e48b4b7c82160c841a6aed81e4bc8b3
+Source0:	http://www.grsecurity.net/~paxguy1/%{name}-%{version}-%{pre}.tar.gz
+# Source0-md5:	146f941482f1d6e526d9af99723f2c95
 Patch0:		%{name}-Makefile.patch
 BuildRequires:	paxctl
-URL:		http://www.adamantix.org/paxtest/
+URL:		http://pax.grsecurity.net/
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,7 +41,7 @@ Tryb "blackhat" symuluje bardziej sprytnego włamywacza, próbuje
 wykonać sprytne sztuczki, aby obejść mechanizmy ochrony.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{pre}
 %patch0 -p1
 
 %build

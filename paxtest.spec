@@ -11,7 +11,7 @@ Source0:	http://www.grsecurity.net/~paxguy1/%{name}-%{version}-%{pre}.tar.gz
 Patch0:		%{name}-Makefile.patch
 BuildRequires:	paxctl
 URL:		http://pax.grsecurity.net/
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 PaXtest is a tool which tests the protection provided by PaX. It is a

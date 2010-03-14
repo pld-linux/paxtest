@@ -1,13 +1,12 @@
 Summary:	PaXtest - a tool which tests the protection provided by PaX
 Summary(pl.UTF-8):	PaXtest - narzędzie testujące mechanizm obronny PaX
 Name:		paxtest
-Version:	0.9.7
-%define		pre	pre5
-Release:	0.%{pre}.1
+Version:	0.9.9
+Release:	1
 License:	GPL v2
 Group:		Applications/System
-Source0:	http://www.grsecurity.net/~paxguy1/%{name}-%{version}-%{pre}.tar.gz
-# Source0-md5:	146f941482f1d6e526d9af99723f2c95
+Source0:	http://www.grsecurity.net/~spender/%{name}-%{version}.tgz
+# Source0-md5:	a2f221b4dd19d3d635962bf62767d16b
 Patch0:		%{name}-Makefile.patch
 BuildRequires:	paxctl
 URL:		http://pax.grsecurity.net/
@@ -41,23 +40,24 @@ Tryb "blackhat" symuluje bardziej sprytnego włamywacza, próbuje
 wykonać sprytne sztuczki, aby obejść mechanizmy ochrony.
 
 %prep
-%setup -q -n %{name}-%{version}-%{pre}
+%setup -q -n %{name}-%{version}
 %patch0 -p1
 
 %build
 # pass CFLAGS,LDFLAGS in env not as make arguments, so += can work
 CFLAGS="%{rpmcflags}" \
 LDFLAGS="%{rpmldflags}" \
-%{__make} generic \
+%{__make} linux \
 	CC="%{__cc}" \
-	RUNDIR="%{_bindir}"
+	RUNDIR="%{_libdir}/paxtest"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -f Makefile.generic install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
+	RUNDIR="%{_libdir}/paxtest" \
 	LIBDIR=%{_libdir}
 
 %clean
@@ -67,4 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README debian/changelog results
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/*.so
+%attr(755,root,root) %{_libdir}/*

@@ -41,7 +41,7 @@ wykonać sprytne sztuczki, aby obejść mechanizmy ochrony.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 # pass CFLAGS,LDFLAGS in env not as make arguments, so += can work
